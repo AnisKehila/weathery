@@ -12,8 +12,6 @@ function app() {
     document.querySelector('head title').innerHTML = 'Weathery';
     const element = document.createElement('div');
     element.setAttribute('id','content');
-    // element.appendChild(header());
-    // element.appendChild(main());
     return element;
 }
 document.body.appendChild(app());
