@@ -8,14 +8,12 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         filename: 'main.js',
     },
-    devtool: false,
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
         })
     ],
-
     module: {
         rules: [
             {
@@ -26,7 +24,14 @@ module.exports = {
                     "sass-loader"
                 ],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
-
+    devtool: 'inline-source-map',
+    devServer: {
+        static: './dist',
+    },
 };

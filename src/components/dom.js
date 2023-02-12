@@ -6,13 +6,9 @@ function setDate(date) {
     const placeDate = document.querySelector('#place-date');
     placeDate.innerHTML = date;
 }
-function importMainIcon(iconLink) {
-    const domIcon = document.querySelector('#icon');
-    const icon = new Image();
+function setMainIcon(iconLink) {
+    const icon = document.querySelector('#icon');
     icon.src = iconLink;
-    icon.classList.add('main-weather-img')
-    domIcon.removeChild(document.querySelector('#icon svg'));
-    domIcon.appendChild(icon);
 }
 function setWeatherNote(note) {
     const domNote = document.querySelector('#note');
@@ -28,7 +24,7 @@ function setFeelsLikeTemp(temp) {
 }
 function setHumidity(value) {
     const humidity = document.querySelector('#humidity-value');
-    humidity.innerHTML = `${value}%`;
+    humidity.innerHTML = `${value} %`;
 }
 function setChanceOfRain(value) {
     const rainPossibility = document.querySelector('#rain-possibility-value');
@@ -36,8 +32,16 @@ function setChanceOfRain(value) {
 }
 function setWindSpeed(value) {
     const windSpeed = document.querySelector('#wind-speed-value');
-    windSpeed.innerHTML = `${value}%`;
+    windSpeed.innerHTML = `${value} km/h`;
 }
 export {
-    importMainIcon,
+    setMainIcon,
+    setPlace,
+    setDate,
+    setWindSpeed,
+    setChanceOfRain,
+    setHumidity,
+    setFeelsLikeTemp,
+    setCurrentTemp,
+    setWeatherNote,
 }

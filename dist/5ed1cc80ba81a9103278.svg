@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="192.10651mm"
+   height="122.49297mm"
+   viewBox="0 0 192.10651 122.49297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   sodipodi:docname="broken-clouds.svg"
+   inkscape:export-filename="clouds-rain.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.3952777"
+     inkscape:cx="82.220677"
+     inkscape:cy="412.36832"
+     inkscape:window-width="1280"
+     inkscape:window-height="678"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showborder="false"
+     showguides="false" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient7237"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:1;"
+         offset="0"
+         id="stop7235" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5247">
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:1;"
+         offset="0.14073905"
+         id="stop5243" />
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:0.77880186;"
+         offset="1"
+         id="stop5245" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5247"
+       id="linearGradient16393"
+       x1="90.363686"
+       y1="181.06207"
+       x2="128.51726"
+       y2="51.875465"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.395297,-60.242484)">
+    <path
+       id="path14205"
+       style="fill:#cccccc;fill-opacity:1;stroke-width:0.258413"
+       d="m 195.99635,118.47684 a 32.400845,31.459948 0 0 1 -32.26477,31.45967 32.400845,31.459948 0 0 1 -32.53577,-31.19544 32.400845,31.459948 0 0 1 31.99151,-31.721677 32.400845,31.459948 0 0 1 32.80446,30.929007 M 156.63039,95.049245 A 31.125271,34.806755 0 0 1 125.63583,129.85569 31.125271,34.806755 0 0 1 94.380948,95.341585 31.125271,34.806755 0 0 1 125.113,60.245246 31.125271,34.806755 0 0 1 156.626,94.464581 M 119.81556,106.42835 A 35.810795,36.814835 0 0 1 84.155147,143.24286 35.810795,36.814835 0 0 1 48.195228,106.73755 35.810795,36.814835 0 0 1 83.553609,69.616438 35.810795,36.814835 0 0 1 119.81051,105.80996 M 88.355608,99.734745 h 64.258622 c 30.40772,0 54.88758,16.419415 54.88758,36.814825 0,20.39542 -24.47986,36.81484 -54.88758,36.81484 H 88.355608 c -30.407717,0 -54.887574,-16.41942 -54.887574,-36.81484 0,-20.39541 24.479857,-36.814825 54.887574,-36.814825 z" />
+    <path
+       id="path14193"
+       style="fill:url(#linearGradient16393);fill-opacity:1;stroke-width:0.258413"
+       d="m 177.92361,127.84789 a 32.400845,31.459948 0 0 1 -32.26477,31.45967 32.400845,31.459948 0 0 1 -32.53577,-31.19544 32.400845,31.459948 0 0 1 31.99151,-31.721678 32.400845,31.459948 0 0 1 32.80446,30.929008 m -39.36139,-22.89916 a 31.125271,34.806755 0 0 1 -30.99456,34.80645 31.125271,34.806755 0 0 1 -31.254882,-34.51411 31.125271,34.806755 0 0 1 30.732052,-35.096335 31.125271,34.806755 0 0 1 31.513,34.219335 M 101.74282,115.7994 A 35.810795,36.814835 0 0 1 66.08241,152.61391 35.810795,36.814835 0 0 1 30.122491,116.1086 35.810795,36.814835 0 0 1 65.480872,78.987487 35.810795,36.814835 0 0 1 101.73777,115.18101 m -31.4549,-6.07522 h 64.25862 c 30.40772,0 54.88758,16.41942 54.88758,36.81483 0,20.39542 -24.47986,36.81484 -54.88758,36.81484 H 70.28287 c -30.407716,0 -54.887573,-16.41942 -54.887573,-36.81484 0,-20.39541 24.479857,-36.81483 54.887573,-36.81483 z" />
+  </g>
+</svg>

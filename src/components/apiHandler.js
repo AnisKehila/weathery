@@ -20,13 +20,20 @@ async function forCast(city) {
     console.log(data)
     return data;
 }
+function getDate(value) {
+    const date = new Date(value * 1000);
+    const options = { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' };
+    const formattedDate = date.toLocaleDateString('en-GB', options);
+    return formattedDate;
+}
 function getTime(value) {
     const date = new Date(value * 1000);
-    const dateString = date.toLocaleDateString();
-    return dateString;
+    const formattedTime = date.getHours();
+    return formattedTime;
 }
 export {
     currentWeather,
     forCast,
-    getTime
+    getTime,
+    getDate
 }
