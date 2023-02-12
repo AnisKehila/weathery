@@ -1,8 +1,24 @@
-const key = '57ccfe82f7bf3fdf50d115eb8d03910e';
+import { cityNotFound, cityFound } from "./dom";
+const key = '20f7632ffc2c022654e4093c6947b4f4';
 async function currentWeather(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+    try {
+        const response = await fetch(url);
+        if(!response.ok) {
+            throw new Error('City not found')
+        }
+        cityFound();
+        const data = await response.json();
+        return data;
+    }catch (error) {
+        cityNotFound('Sorry, the city you searched for was not found. Please try again.');
+    }
+}
+async function cityHints(input) {
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=3&appid=${key}`;
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data);
     return data;
 }
 async function getLocation(city) {
@@ -33,5 +49,6 @@ export {
     currentWeather,
     forCast,
     getTime,
-    getDate
+    getDate,
+    cityHints
 }

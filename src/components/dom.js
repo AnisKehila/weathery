@@ -1,3 +1,10 @@
+// Import Icons
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+}
+const icons = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
 function setPlace(city, country) {
     const cityName = document.querySelector('#place-name');
     cityName.innerHTML = `${city}, ${country}`;
@@ -6,7 +13,8 @@ function setDate(date) {
     const placeDate = document.querySelector('#place-date');
     placeDate.innerHTML = date;
 }
-function setMainIcon(iconLink) {
+function setMainIcon(weather) {
+    const iconLink = chooseIcon(weather)
     const icon = document.querySelector('#icon');
     icon.src = iconLink;
 }
@@ -38,15 +46,84 @@ function setTempPopularCities(value, id) {
     const tempField = document.getElementById(id);
     tempField.innerHTML = `${value} °C`;
 }
-function searchInputHandler() {
-    const inputValue = document.querySelector('#search-field').value;
-    const lastSearched = document.querySelector('.last-searched');
-    const searchHistory = [];
-    searchHistory.push(inputValue);
-    console.log(searchHistory);
+const searchHistory = [];
+const dropDown = document.querySelector('#drop-down');
+const lastSearched = document.querySelector('.last-searched');
+function addHistory(value) {
+    searchHistory.unshift(value);
+    resetHistory();
+    if(searchHistory.length > 1) {
+        for(let i = 0 ; i < 2 ; i++) {
+            const li = document.createElement('li');
+            li.classList.add('card');
+            li.dataset.city = searchHistory[i];
+            li.innerHTML = searchHistory[i];
+            lastSearched.appendChild(li);
+        }
+    }
+}
+function resetHistory() {
+    const lastSearches = document.querySelectorAll('.last-searched li');
+    lastSearches.forEach(ele => ele.remove());
+}
+function hideSuggestion() {
+    const li = document.querySelectorAll('#drop-down li');
+    li.forEach(li => li.remove());
+    document.addEventListener('click', function(event) {
+        if (!dropDown.contains(event.target)) {
+            const li = document.querySelectorAll('#drop-down li');
+            li.forEach(li => li.remove());
+        }
+    });
+}
+function appendLi(value) {
+    const hintLi = document.createElement('li');
+    hintLi.innerHTML = value;
+    hintLi.style = 'display: block';
+    dropDown.appendChild(hintLi);
+}
+
+function cityNotFound(value) {
+    const note = document.querySelector('#city-note');
+    note.innerHTML = value;
+}
+function cityFound() {
+    const note = document.querySelector('#city-note');
+    const searhcField = document.querySelector('#search-field');
+    searhcField.value = '';
+    note.innerHTML = '';
+}
+function chooseIcon(value) {
+    switch (value) {
+        case "01d":
+            return icons['sun.svg'];
+        case "02d" || "02n":
+            return icons['cloud.svg'];
+        case "03d":
+            return icons['partial-clouds.svg'];
+        case "04d"|| "04n":
+            return icons['broken-clouds.svg'];
+        case "09d"|| "09n":
+            return icons['clouds-rain.svg'];
+        case "10d":
+            return icons['sun-rain.svg'];
+        case "11d"|| "11n":
+            return icons['thunder.svg'];
+        case "13d"|| "13n":
+            return icons['snow.svg'];
+        case "01n":
+            return icons['clear-night.svg'];
+        case "03n":
+            return icons['cloudy-night.svg'];
+        case "10n":
+            return icons['night-rain.svg'];
+        default:
+            return icons['broken-clouds.svg'];
+    }
 }
 export {
     setMainIcon,
+    chooseIcon,
     setPlace,
     setDate,
     setWindSpeed,
@@ -56,5 +133,9 @@ export {
     setCurrentTemp,
     setWeatherNote,
     setTempPopularCities,
-    searchInputHandler
+    appendLi,
+    hideSuggestion,
+    cityNotFound,
+    addHistory,
+    cityFound
 }

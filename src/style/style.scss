@@ -148,6 +148,29 @@ body::before {
             align-items: center;
             justify-content: center;
             width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+            #city-note {
+                font-size: 0.9rem;
+                position: absolute;
+                bottom: -18px;
+            }
+            ul {
+                position: absolute;
+                top: 47px;
+                background: #ffff;
+                color: black;
+                z-index: 1;
+                width: 60%;
+                border-radius: 8px;
+                transition: .2s;
+                li {
+                    padding: 4px 14px;
+                    cursor: pointer;
+                    display: none;
+                }
+            }
+            
         }
         input[type=  'text'] {
             background-color: rgba(255,255,255,.4);
@@ -175,10 +198,11 @@ body::before {
         ::placeholder {
             color: white;
         }
-        .icon{
+        #search-icon {
             cursor: pointer;
             transform: translateX(-14px);
         }
+
         .search-place {
             width: 60%;
             h2 {

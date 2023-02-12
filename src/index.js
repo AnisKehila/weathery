@@ -36,9 +36,6 @@ async function initCity(city) {
         case 'Drizzle':
             domFunctions.setChanceOfRain(75);
             break;
-        case 'Drizzle':
-            domFunctions.setChanceOfRain(75);
-            break;
         case 'Thunderstorm':
             domFunctions.setChanceOfRain(98);
             break;
@@ -47,43 +44,7 @@ async function initCity(city) {
             break;
     }
     domFunctions.setWindSpeed(data.wind.speed);
-    switch (data.weather[0].icon) {
-        case "01d":
-            domFunctions.setMainIcon(icons['sun.svg']);
-            break;
-        case "02d" || "02n":
-            domFunctions.setMainIcon(icons['cloud.svg']);
-            break;
-        case "03d":
-            domFunctions.setMainIcon(icons['partial-clouds.svg']);
-            break;
-        case "04d"|| "04n":
-            domFunctions.setMainIcon(icons['broken-clouds.svg']);
-            break;
-        case "09d"|| "09n":
-            domFunctions.setMainIcon(icons['clouds-rain.svg']);
-            break;
-        case "10d":
-            domFunctions.setMainIcon(icons['sun-rain.svg']);
-            break;
-        case "11d"|| "11n":
-            domFunctions.setMainIcon(icons['thunder.svg']);
-            break;
-        case "13d"|| "13n":
-            domFunctions.setMainIcon(icons['snow.svg']);
-            break;
-        case "01n":
-            domFunctions.setMainIcon(icons['clear-night.svg']);
-            break;
-        case "03n":
-            domFunctions.setMainIcon(icons['cloudy-night.svg']);
-            break;
-        case "10n":
-            domFunctions.setMainIcon(icons['night-rain.svg']);
-            break;
-        default:
-            domFunctions.setMainIcon(icons['broken-clouds.svg']);
-    }
+    domFunctions.setMainIcon(data.weather[0].icon);
     // Set background
     let weather = data.weather[0].icon;
     if(weather.includes('d') && (weather.includes('01') || weather.includes('02') || weather.includes('03'))) {
@@ -102,20 +63,46 @@ async function popularCities() {
     const ndData = await apiFunctions.currentWeather('oran');
     domFunctions.setTempPopularCities(stData.main.temp, 'new-york-temp');
     domFunctions.setTempPopularCities(ndData.main.temp, 'oran-temp');
-    const cards = document.querySelectorAll('.popular-places .card');
+
+}
+
+// searches handler
+async function searchInputHandler() {
+    const searchIcon = document.querySelector('#search-icon');
+    const input = document.querySelector('#search-field');
+    searchIcon.addEventListener('click', () => {
+        if(input.value !== '') {
+            initCity(input.value)
+            domFunctions.addHistory(input.value);
+            changeCity();
+        }  
+        
+    });
+    input.addEventListener('input', async ()=> {
+        if(input.value != '') {
+            const hints = await apiFunctions.cityHints(input.value);
+            domFunctions.hideSuggestion();
+            hints.forEach(hint => {
+                domFunctions.appendLi(`${hint.name},${hint.country}`);
+            });
+        }
+        const dropDownLi = document.querySelectorAll('#drop-down li');
+        dropDownLi.forEach(ele => ele.addEventListener('click', () => {
+            initCity(ele.innerHTML);
+            domFunctions.hideSuggestion();
+            domFunctions.addHistory(ele.innerHTML);
+            changeCity();
+        }));
+    });
+
+}
+function changeCity() {
+    const cards = document.querySelectorAll('li.card');
     cards.forEach((card) => {
         card.addEventListener('click', () => initCity(card.dataset.city));
-    })
+    });
 }
-
-// last searches handler
-async function search() {
-    const searchInput = document.querySelector('.search .icon');
-
-}
-
-
-
-search();
+changeCity();
+searchInputHandler();
 popularCities();
 initCity('algiers');
