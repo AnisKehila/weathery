@@ -34,6 +34,17 @@ function setWindSpeed(value) {
     const windSpeed = document.querySelector('#wind-speed-value');
     windSpeed.innerHTML = `${value} km/h`;
 }
+function setTempPopularCities(value, id) {
+    const tempField = document.getElementById(id);
+    tempField.innerHTML = `${value} °C`;
+}
+function searchInputHandler() {
+    const inputValue = document.querySelector('#search-field').value;
+    const lastSearched = document.querySelector('.last-searched');
+    const searchHistory = [];
+    searchHistory.push(inputValue);
+    console.log(searchHistory);
+}
 export {
     setMainIcon,
     setPlace,
@@ -44,4 +55,6 @@ export {
     setFeelsLikeTemp,
     setCurrentTemp,
     setWeatherNote,
+    setTempPopularCities,
+    searchInputHandler
 }

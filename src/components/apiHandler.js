@@ -1,10 +1,8 @@
-import moment from 'moment-timezone';
 const key = '57ccfe82f7bf3fdf50d115eb8d03910e';
 async function currentWeather(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
 }
 async function getLocation(city) {

@@ -94,6 +94,28 @@ async function initCity(city) {
         document.body.className = 'night';
     } else {
         document.body.className = 'rainy-night';
-    }
+    }    
 }
-initCity('georgia');
+// Set popular cities 
+async function popularCities() {
+    const stData = await apiFunctions.currentWeather('New York');
+    const ndData = await apiFunctions.currentWeather('oran');
+    domFunctions.setTempPopularCities(stData.main.temp, 'new-york-temp');
+    domFunctions.setTempPopularCities(ndData.main.temp, 'oran-temp');
+    const cards = document.querySelectorAll('.popular-places .card');
+    cards.forEach((card) => {
+        card.addEventListener('click', () => initCity(card.dataset.city));
+    })
+}
+
+// last searches handler
+async function search() {
+    const searchInput = document.querySelector('.search .icon');
+
+}
+
+
+
+search();
+popularCities();
+initCity('algiers');
