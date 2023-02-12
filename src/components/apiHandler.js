@@ -1,7 +1,7 @@
 import moment from 'moment-timezone';
 const key = '57ccfe82f7bf3fdf50d115eb8d03910e';
 async function currentWeather(city) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
@@ -14,7 +14,7 @@ async function getLocation(city) {
 }
 async function forCast(city) {
     const {lon, lat} = await getLocation(city);
-    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data)
