@@ -31,8 +31,34 @@ async function forCast(city) {
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
-    return data;
+    const dailyWeather = [];
+    for(let list of data.list) {
+        const day = list.dt_txt.split(" ")[0];
+        const time = list.dt_txt.split(" ")[1];
+        const temp = list.main.temp;
+        let dailyDataIndex = -1;
+        dailyWeather.forEach((data, index) => {
+            if (data.date === day) {
+                dailyDataIndex = index;
+            }
+        });
+        if (dailyDataIndex === -1) {
+            dailyWeather.push({
+                date: day,
+                minTemperature: temp,
+                maxTemperature: temp,
+            });
+        } else {
+            time === '12:00:00' ? dailyWeather[dailyDataIndex].icon = list.weather[0].icon : false;
+            if (temp < dailyWeather[dailyDataIndex].minTemperature) {
+                dailyWeather[dailyDataIndex].minTemperature = temp;
+            }
+            if (temp > dailyWeather[dailyDataIndex].maxTemperature) {
+                dailyWeather[dailyDataIndex].maxTemperature = temp;
+            }
+        }
+    }
+    return dailyWeather;
 }
 function getDate(value) {
     const date = new Date(value * 1000);

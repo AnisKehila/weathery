@@ -45,6 +45,8 @@ async function initCity(city) {
     }
     domFunctions.setWindSpeed(data.wind.speed);
     domFunctions.setMainIcon(data.weather[0].icon);
+    // Set forCast
+    dailyWeather(city);
     // Set background
     let weather = data.weather[0].icon;
     if(weather.includes('d') && (weather.includes('01') || weather.includes('02') || weather.includes('03'))) {
@@ -94,13 +96,18 @@ async function searchInputHandler() {
             changeCity();
         }));
     });
-
 }
+
 function changeCity() {
     const cards = document.querySelectorAll('li.card');
     cards.forEach((card) => {
         card.addEventListener('click', () => initCity(card.dataset.city));
     });
+}
+
+async function dailyWeather(city) {
+    const data = await apiFunctions.forCast(city);
+    domFunctions.setDailyWeather(data);
 }
 changeCity();
 searchInputHandler();

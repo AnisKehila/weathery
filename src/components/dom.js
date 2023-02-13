@@ -93,6 +93,35 @@ function cityFound() {
     searhcField.value = '';
     note.innerHTML = '';
 }
+function setDailyWeather(objectOfFiveDays) {
+    const list = document.querySelector('#list');
+    list.innerHTML = '';
+    for(let i = 0; i < 5; i++) {
+        const li = document.createElement('li');
+        const day = document.createElement('span');
+        day.className = 'day';
+        const dayValue = new Date(objectOfFiveDays[i].date).toLocaleDateString("default", { weekday: "long" });
+        day.innerHTML = dayValue;
+        li.appendChild(day);
+        const icon = document.createElement('span');
+        icon.className = 'icon';
+        const img = new Image();
+        img.src = chooseIcon(objectOfFiveDays[i].icon);
+        icon.appendChild(img);
+        li.appendChild(icon)
+        const maxTemp = document.createElement('span');
+        maxTemp.className = 'max-temp';
+        maxTemp.innerHTML = objectOfFiveDays[i].maxTemperature + ' °C';
+        li.appendChild(maxTemp);
+        const minTemp = document.createElement('span');
+        minTemp.className = 'min-temp';
+        minTemp.innerHTML = objectOfFiveDays[i].minTemperature + ' °C';
+        li.appendChild(minTemp);
+        list.appendChild(li);
+    }
+    console.log(objectOfFiveDays);
+
+}
 function chooseIcon(value) {
     switch (value) {
         case "01d":
@@ -137,5 +166,6 @@ export {
     hideSuggestion,
     cityNotFound,
     addHistory,
-    cityFound
+    cityFound,
+    setDailyWeather
 }
