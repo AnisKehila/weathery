@@ -53,13 +53,11 @@ function addHistory(value) {
     searchHistory.unshift(value);
     resetHistory();
     if(searchHistory.length > 1) {
-        for(let i = 0 ; i < 2 ; i++) {
-            const li = document.createElement('li');
-            li.classList.add('card');
-            li.dataset.city = searchHistory[i];
-            li.innerHTML = searchHistory[i];
-            lastSearched.appendChild(li);
-        }
+        const li = document.createElement('li');
+        li.classList.add('card');
+        li.dataset.city = searchHistory[1];
+        li.innerHTML = searchHistory[1];
+        lastSearched.appendChild(li);
     }
 }
 function resetHistory() {
@@ -99,28 +97,26 @@ function setDailyWeather(objectOfFiveDays) {
     for(let i = 0; i < 5; i++) {
         const li = document.createElement('li');
         const day = document.createElement('span');
-        day.className = 'day';
+        day.classList.add('day');
         const dayValue = new Date(objectOfFiveDays[i].date).toLocaleDateString("default", { weekday: "long" });
         day.innerHTML = dayValue;
         li.appendChild(day);
         const icon = document.createElement('span');
-        icon.className = 'icon';
+        icon.classList.add('icon');
         const img = new Image();
         img.src = chooseIcon(objectOfFiveDays[i].icon);
         icon.appendChild(img);
         li.appendChild(icon)
         const maxTemp = document.createElement('span');
-        maxTemp.className = 'max-temp';
+        maxTemp.classList.add('max-temp');
         maxTemp.innerHTML = objectOfFiveDays[i].maxTemperature + ' °C';
         li.appendChild(maxTemp);
         const minTemp = document.createElement('span');
-        minTemp.className = 'min-temp';
+        minTemp.classList.add('min-temp');
         minTemp.innerHTML = objectOfFiveDays[i].minTemperature + ' °C';
         li.appendChild(minTemp);
         list.appendChild(li);
     }
-    console.log(objectOfFiveDays);
-
 }
 function chooseIcon(value) {
     switch (value) {
