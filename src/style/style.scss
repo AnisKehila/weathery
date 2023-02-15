@@ -326,12 +326,20 @@ body.rainy-day {
         }
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     body {
-        overflow: scroll;
+        overflow: auto;
+        position: relative;
+        &::before {
+            min-height: 103%;
+            top: -1%;
+        }
     }
 }
-@media (max-width: 615px) {
+@media (max-width: 630px) {
+    #app {
+        padding: 0 10px;
+    }
     .show-info {
         .place-info {
             flex-direction: column;
@@ -365,6 +373,13 @@ body.rainy-day {
                 width: 40px !important;
                 height: 26px !important;
             }
+        }
+    }
+}
+@media (max-width: 480px) {
+    .coming-weather {
+        ul {
+            font-size: 0.875rem;
         }
     }
 }
