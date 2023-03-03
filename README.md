@@ -50,4 +50,4 @@ If you'd like to contribute to the development of Weathery, please fork the repo
 
 ## License
 
-Weathery is released under the MIT License. See [LICENSE]() for details.
+Weathery is released under the MIT License. See [LICENSE](https://github.com/AnisKehila/weathery/blob/main/LICENSE) for details.
